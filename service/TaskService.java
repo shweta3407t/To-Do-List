@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskService {
-    public static void  handleTask (String choice,Scanner sc, ArrayList<String> list) {
+    public static void handleTask(String choice, Scanner sc, ArrayList<String> list) {
         switch (choice) {
-            case  "A":
+            case "A":
                 service.TaskService.addTask(sc, list);
                 break;
-            case  "V":
+            case "V":
                 service.TaskService.viewTask(sc, list);
                 break;
-            case  "U":
+            case "U":
                 service.TaskService.updateTask(sc, list);
                 break;
-            case  "D":
+            case "D":
                 service.TaskService.deleteTask(sc, list);
                 break;
             case "DALL":
-                service.TaskService.deleteAllTask(sc,list);
+                service.TaskService.deleteAllTask(sc, list);
                 break;
-            case  "E":
+            case "E":
                 service.TaskService.exit(sc, list);
-            
+
             default:
                 System.out.println("...INVALID CHOICE SELECTED.....");
                 break;
@@ -50,11 +50,11 @@ public class TaskService {
                     isContinue = false;
                     continue;
                 } else if (s.equalsIgnoreCase("E")) {
-                    System.out.println("...exit add task....");
+                    System.out.println("... EXITING ADD TASK....");
                     isContinue = false;
                     return;
                 } else {
-                    System.out.println("..wront option selected..");
+                    System.out.println("......WRONG OPTION SELECTED.....");
                     continue;
                 }
             }
@@ -63,12 +63,12 @@ public class TaskService {
     }
 
     public static void viewTask(Scanner sc, ArrayList<String> list) {
-       
+
         if (list.isEmpty()) {
-            System.out.println("NO TASK ADDED");
+            System.out.println("----NO TASK ADDED----");
             return;
         } else {
-            System.out.println("SHOWING TODO LIST.");
+            System.out.println(".....SHOWING TODO LIST.......");
             for (int i = 0; i < list.size(); i++) {
                 System.out.println((i + 1) + "." + list.get(i));
             }
@@ -77,16 +77,20 @@ public class TaskService {
     }
 
     public static void updateTask(Scanner sc, ArrayList<String> list) {
-        int idx = 0;
+        int idx = 1;
         System.out.println("ENTER INDEX OF TASK TO UPDATE:");
         idx = sc.nextInt();
+
+        if (idx > list.size() - 1) {
+            System.out.println(" ....THIS INDEX DOES NOT EXIST......");
+            return;
+        }
 
         System.out.println("ENTER UPDATED TASK:");
         String updatedTask = sc.next();
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.set(idx, updatedTask));
-        }
+        list.set(idx, updatedTask);
+        System.out.println("TO DO LIST UPDATED.");
 
     }
 
