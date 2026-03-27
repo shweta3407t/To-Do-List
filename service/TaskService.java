@@ -6,22 +6,22 @@ import java.util.Scanner;
 public class TaskService {
     public static void handleTask(String choice, Scanner sc, ArrayList<String> list) {
         switch (choice) {
-            case "A":
+            case "a":
                 service.TaskService.addTask(sc, list);
                 break;
-            case "V":
+            case "v":
                 service.TaskService.viewTask(sc, list);
                 break;
-            case "U":
+            case " u":
                 service.TaskService.updateTask(sc, list);
                 break;
-            case "D":
+            case " d":
                 service.TaskService.deleteTask(sc, list);
                 break;
-            case "DALL":
+            case " dall":
                 service.TaskService.deleteAllTask(sc, list);
                 break;
-            case "E":
+            case " e":
                 service.TaskService.exit(sc, list);
 
             default:
